@@ -84,7 +84,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-.button__produto{
+.button{
   position: absolute;
   top: 70%;
   right: 0;
