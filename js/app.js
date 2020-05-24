@@ -11,7 +11,10 @@ const conteudoCarrinho = document.querySelector(".conteudo__carrinho")
 const produtosDOM = document.querySelector(".produtos")
 
 //Array pra por informações no LocalStorage
-let cart = []
+let carrinho = []
+
+//Botões
+let botoesDOM = []
 
 //Classe responsável pela captura de produtos (pegar do arquivo JSON)
 class Produtos {
@@ -38,27 +41,53 @@ class Produtos {
 class UIProdutos {
   mostraProdutos(produtos) {
     let resultado = ''
+    //Para cada produto, ele vai gerar o seguinte código
     produtos.forEach(produto => {
       resultado += `
       <article class="main__produto">
       <div class="img-container">
         <img src=${produto.image} alt="produto" class="img-produto">
-        <button class="button__produto" data-id=${produto.id}>
+        <button class="button" data-id=${produto.id}>
           <i class="fas fa-shopping-cart"></i>
           Adicionar ao carrinho
         </button>
       </div>
       <h3>${produto.title}</h3>
-      <h4>$${produto.price}</h4>
+      <h4>R$${produto.price}</h4>
     </article>
       `
     })
     produtosDOM.innerHTML = resultado;
   }
 
+  //Método para pegar os botões e fazê-los funcionais
   pegaBotoes() {
-    const buttons = [...document.querySelectorAll(".button__produto")]
-    console.log(buttons)
+    const buttons = [...document.querySelectorAll(".button")]
+    botoesDOM = buttons
+    buttons.forEach(button => {
+      let id = button.dataset.id
+      let noCarrinho = carrinho.find(item => item.id === id)
+      if (noCarrinho) {
+        button.innerText = "No Carrinho"
+        button.disabled = true
+      } else {
+        button.onclick = (event) => {
+          event.target.innerText = "No Carrinho"
+          event.target.disabled = true
+          //Pega produto de produtos
+          let itemCarrinho = { ...ArmazenamentoLocal.pegaProduto(id), amount: 1 }
+
+          //Adiciona produto ao carrinho
+          carrinho = [...carrinho, itemCarrinho]
+          console.log(carrinho);
+
+          //Salva o carrinho no LocalStorage
+          //Coloca o preço do carrinho
+          //Mostra o item do carrinho
+          //Mostra o carrinho
+        }
+      }
+    })
   }
 }
 
@@ -66,6 +95,11 @@ class UIProdutos {
 class ArmazenamentoLocal {
   static guardarProdutos(products) {
     localStorage.setItem("produtos", JSON.stringify(products))
+  }
+
+  static pegaProduto(id) {
+    let produtos = JSON.parse(localStorage.getItem("produtos"))
+    return produtos.find(product => product.id === id)
   }
 }
 
