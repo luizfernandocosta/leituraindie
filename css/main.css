@@ -2,6 +2,7 @@
 
 body {
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header{
@@ -34,7 +35,7 @@ body {
   left: 0;
   background-color: #1a1b1f;
   z-index: 1;
-  opacity: 0.65;
+  opacity: 0.55;
 }
 
 .header__content {

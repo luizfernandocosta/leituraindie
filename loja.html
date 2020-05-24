@@ -5,13 +5,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="fontawesome/css/all.css">
   <link rel="stylesheet" href="css/loja.css">
   <title>LeituraIndie</title>
 </head>
 
 <body>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem recusandae corporis ea quam omnis harum enim quas?
-    Adipisci atque sequi fugiat cum, architecto nesciunt quod quidem, rerum voluptate voluptates consequuntur.</p>
+  <header class="header">
+    <nav class="header__navbar">
+      <h1 class="logo">Leitura<span class="cor">Indie</span></h1>
+      <div class="header__button">
+        <div class="nav-icon">
+          <i class="fas fa-cart-plus"></i>
+        </div>
+        <div class="header__items">0</div>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="main__produtos">
+      <div class="main__titulo">
+        <h2>Nossos Livros</h2>
+      </div>
+      <div class="produtos">
+      </div>
+    </section>
+  </main>
+  <div class="carrinho__overlay">
+    <div class="carrinho">
+      <span class="fechar__carrinho">
+        <i class="fas fa-window-close"></i>
+      </span>
+      <h2>Seu Carrinho</h2>
+      <div class="conteudo__carrinho">
+        <div class="item__carrinho">
+          <img src="images/product-1.jpeg">
+          <div>
+            <h4>queen bed</h4>
+            <h5>R$9</h5>
+            <span class="remover-item">Remover</span>
+          </div>
+          <div>
+            <i class="fas fa-chevron-up"></i>
+            <p class="quantidade__item">1</p>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+      <div class="footer__carrinho">
+        <h3>Total: $<span class="total__carrinho">0</span></h3>
+        <button class="limpar__carrinho footer__button">Limpar Carrinho</button>
+        <button class="footer__button">Prosseguir para compra</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
