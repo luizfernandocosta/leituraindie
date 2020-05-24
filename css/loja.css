@@ -159,10 +159,10 @@ body {
   transition: .3s;
   transform: translateX(100%);
 }
-.showCart {
+.mostraCarrinho{
   transform: translateX(0);
 }
-.transparentBcg {
+.transparente {
   visibility: visible;
 }
 @media screen and (min-width: 768px) {
