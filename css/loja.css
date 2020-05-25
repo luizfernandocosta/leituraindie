@@ -50,8 +50,6 @@ body {
   color: #4fc3f7;
 }
 
-/* --------------- Products ---------------- */
-
 .main__produtos {
   padding: 4rem 0;
 }
@@ -247,4 +245,30 @@ body {
 .footer__button:hover {
   background: transparent;
   color: black;
+}
+
+@media (max-width: 600px) {
+
+  .header__navbar {
+    position: fixed;
+    justify-content: space-between;
+  }
+
+  .produtos {
+    width: 70vw;
+  }
+
+  .main__titulo h2 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo {
+    margin-left: 10px;
+  }
+
+  .header__button {
+    margin-right: 10px;
+  }
 }
