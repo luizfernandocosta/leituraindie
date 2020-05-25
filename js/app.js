@@ -1,6 +1,6 @@
 // Criando variáveis para os botões
 
-const btnCarrinho = document.querySelector(".header__button")
+const btnMostraCarrinho = document.querySelector(".header__button")
 const btnFecharCarrinho = document.querySelector(".fechar__carrinho")
 const btnLimparCarrinho = document.querySelector(".limpar__carrinho")
 const carrinhoDOM = document.querySelector(".carrinho")
@@ -9,12 +9,15 @@ const quantidadeItemsCarrinho = document.querySelector(".header__items")
 const totalItemsCarrinho = document.querySelector(".total__carrinho")
 const conteudoCarrinho = document.querySelector(".conteudo__carrinho")
 const produtosDOM = document.querySelector(".produtos")
+const compraCheckout = document.querySelector(".checkout")
 
 //Array pra por informações no LocalStorage
 let carrinho = []
 
 //Botões
 let botoesDOM = []
+
+let tempTotal = 0;
 
 //Classe responsável pela captura de produtos (pegar do arquivo JSON)
 class Produtos {
@@ -79,15 +82,133 @@ class UIProdutos {
 
           //Adiciona produto ao carrinho
           carrinho = [...carrinho, itemCarrinho]
-          console.log(carrinho);
 
           //Salva o carrinho no LocalStorage
+          ArmazenamentoLocal.salvarCarrinho(carrinho)
+
           //Coloca o preço do carrinho
+          this.precoCarrinho(carrinho)
+
           //Mostra o item do carrinho
+          this.adicionaItemCarrinho(itemCarrinho)
+
           //Mostra o carrinho
+          this.mostraCarrinho()
         }
       }
     })
+  }
+
+  precoCarrinho(carrinho) {
+    let itensTotal = 0;
+    carrinho.map(item => {
+      tempTotal += item.price * item.amount
+      itensTotal += item.amount
+    })
+    totalItemsCarrinho.innerText = parseFloat(tempTotal.toFixed(2))
+    quantidadeItemsCarrinho.innerText = itensTotal
+  }
+
+  adicionaItemCarrinho(item) {
+    const div = document.createElement('div')
+    div.classList.add('item__carrinho')
+    div.innerHTML = ` 
+    <img src=${item.image}>
+    <div>
+      <h4>${item.title}</h4>
+      <h5>R$${item.price}</h5>
+      <span class="remover-item" data-id=${item.id}>Remover</span>
+    </div>
+    <div>
+      <i class="fas fa-chevron-up incrementa" data-id=${item.id}></i>
+      <p class="quantidade__item">${item.amount}</p>
+      <i class="fas fa-chevron-down decrementa" data-id=${item.id}></i>
+    </div>`
+    conteudoCarrinho.appendChild(div)
+  }
+
+  mostraCarrinho() {
+    carrinhoOverlay.classList.add('transparente')
+    carrinhoDOM.classList.add('mostraCarrinho')
+  }
+
+  configAPP() {
+    carrinho = ArmazenamentoLocal.recuperaCarrinho()
+    this.precoCarrinho(carrinho)
+    this.adiciona(carrinho)
+    btnMostraCarrinho.addEventListener('click', this.mostraCarrinho)
+    btnFecharCarrinho.addEventListener('click', this.fechaCarrinho)
+  }
+
+  adiciona(carrinho) {
+    carrinho.forEach(item => this.adicionaItemCarrinho(item))
+  }
+
+  fechaCarrinho() {
+    carrinhoOverlay.classList.remove('transparente')
+    carrinhoDOM.classList.remove('mostraCarrinho')
+  }
+
+  configCarrinho() {
+    btnLimparCarrinho.addEventListener('click', () => {
+      this.limpaCarrinho();
+    })
+
+    //Funcionalidade do carrinho
+    conteudoCarrinho.addEventListener('click', event => {
+      if (event.target.classList.contains('remover-item')) {
+        let removerItem = event.target;
+        let id = removerItem.dataset.id
+        conteudoCarrinho.removeChild(removerItem.parentElement.parentElement);
+        this.removerItem(id)
+      }
+      else if (event.target.classList.contains('incrementa')) {
+        let incrementaItem = event.target
+        let id = incrementaItem.dataset.id
+        let itemTemp = carrinho.find(item => item.id === id)
+        itemTemp.amount = itemTemp.amount + 1
+        ArmazenamentoLocal.salvarCarrinho(carrinho)
+        this.precoCarrinho(carrinho)
+        incrementaItem.nextElementSibling.innerText = itemTemp.amount
+      }
+      else if (event.target.classList.contains('decrementa')) {
+        let decrementaItem = event.target
+        let id = decrementaItem.dataset.id
+        let itemTemp = carrinho.find(item => item.id === id)
+        itemTemp.amount = itemTemp.amount - 1
+        if (itemTemp.amount > 0) {
+          ArmazenamentoLocal.salvarCarrinho(carrinho)
+          this.precoCarrinho(carrinho)
+          decrementaItem.previousElementSibling.innerText = itemTemp.amount
+        } else {
+          conteudoCarrinho.removeChild(decrementaItem.parentElement.parentElement)
+          this.removerItem(id)
+        }
+      }
+    })
+  }
+
+  limpaCarrinho() {
+    let qtdItensCarrinho = carrinho.map(item => item.id)
+    qtdItensCarrinho.forEach(id => this.removerItem(id))
+    console.log(conteudoCarrinho.children)
+    while (conteudoCarrinho.children.length > 0) {
+      conteudoCarrinho.removeChild(conteudoCarrinho.children[0])
+    }
+    this.fechaCarrinho()
+  }
+
+  removerItem(id) {
+    carrinho = carrinho.filter(item => item.id !== id)
+    this.precoCarrinho(carrinho)
+    ArmazenamentoLocal.salvarCarrinho(carrinho)
+    let botao = this.habilitaBotao(id)
+    botao.disabled = false;
+    botao.innerHTML = `<i class="fas fa-shopping-cart"></i>Adicionar ao carrinho`
+  }
+
+  habilitaBotao(id) {
+    return botoesDOM.find(botao => botao.dataset.id === id)
   }
 }
 
@@ -101,11 +222,25 @@ class ArmazenamentoLocal {
     let produtos = JSON.parse(localStorage.getItem("produtos"))
     return produtos.find(product => product.id === id)
   }
+
+  static salvarCarrinho(carrinho) {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho))
+  }
+
+  static recuperaCarrinho() {
+    return localStorage.getItem('carrinho') ? JSON.parse(localStorage.getItem('carrinho')) : []
+  }
+
+  static compraTotal(carrinho) {
+    localStorage.setItem("itenscarrinho", JSON.stringify(carrinho))
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const mostraproduto = new UIProdutos();
   const produtos = new Produtos();
+  //Inicío do app
+  mostraproduto.configAPP()
 
   //Pegar todos os produtos
   produtos.pegaProdutos()
@@ -114,6 +249,12 @@ document.addEventListener("DOMContentLoaded", () => {
       ArmazenamentoLocal.guardarProdutos(produtos)
     })
     .then(() => {
-      mostraproduto.pegaBotoes();
+      mostraproduto.pegaBotoes()
+      mostraproduto.configCarrinho()
     })
 })
+
+compraCheckout.onclick = () => {
+  localStorage.setItem("checkout", JSON.stringify(carrinho))
+  localStorage.setItem("precototal", JSON.stringify(tempTotal))
+}
