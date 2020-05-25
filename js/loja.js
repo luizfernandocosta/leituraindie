@@ -17,7 +17,7 @@ let carrinho = []
 //Botões
 let botoesDOM = []
 
-let tempTotal = 0;
+let precoTotalCarrinho = 0
 
 //Classe responsável pela captura de produtos (pegar do arquivo JSON)
 class Produtos {
@@ -28,10 +28,10 @@ class Produtos {
       let dados = await resultado.json()
       let produtos = dados.items
       produtos = produtos.map(item => {
-        const { title, price } = item.fields
+        const { title, price, author } = item.fields
         const { id } = item.sys
         const image = item.fields.image.fields.file.url
-        return { title, price, id, image }
+        return { title, price, id, image, author }
       })
       return produtos
     } catch (error) {
@@ -56,6 +56,7 @@ class UIProdutos {
         </button>
       </div>
       <h3>${produto.title}</h3>
+      <h3>${produto.author}</h3>
       <h4>R$${produto.price}</h4>
     </article>
       `
@@ -100,6 +101,7 @@ class UIProdutos {
   }
 
   precoCarrinho(carrinho) {
+    let tempTotal = 0;
     let itensTotal = 0;
     carrinho.map(item => {
       tempTotal += item.price * item.amount
@@ -107,6 +109,7 @@ class UIProdutos {
     })
     totalItemsCarrinho.innerText = parseFloat(tempTotal.toFixed(2))
     quantidadeItemsCarrinho.innerText = itensTotal
+    precoTotalCarrinho = tempTotal
   }
 
   adicionaItemCarrinho(item) {
@@ -166,7 +169,7 @@ class UIProdutos {
         let incrementaItem = event.target
         let id = incrementaItem.dataset.id
         let itemTemp = carrinho.find(item => item.id === id)
-        itemTemp.amount = itemTemp.amount + 1
+        itemTemp.amount += 1
         ArmazenamentoLocal.salvarCarrinho(carrinho)
         this.precoCarrinho(carrinho)
         incrementaItem.nextElementSibling.innerText = itemTemp.amount
@@ -175,7 +178,7 @@ class UIProdutos {
         let decrementaItem = event.target
         let id = decrementaItem.dataset.id
         let itemTemp = carrinho.find(item => item.id === id)
-        itemTemp.amount = itemTemp.amount - 1
+        itemTemp.amount -= 1
         if (itemTemp.amount > 0) {
           ArmazenamentoLocal.salvarCarrinho(carrinho)
           this.precoCarrinho(carrinho)
@@ -230,10 +233,6 @@ class ArmazenamentoLocal {
   static recuperaCarrinho() {
     return localStorage.getItem('carrinho') ? JSON.parse(localStorage.getItem('carrinho')) : []
   }
-
-  static compraTotal(carrinho) {
-    localStorage.setItem("itenscarrinho", JSON.stringify(carrinho))
-  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -255,6 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 compraCheckout.onclick = () => {
-  localStorage.setItem("checkout", JSON.stringify(carrinho))
-  localStorage.setItem("precototal", JSON.stringify(tempTotal))
+  localStorage.setItem("precototal", JSON.stringify(precoTotalCarrinho))
+  window.location.replace("checkout.html")
 }
