@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-:root {
-  --primaryColor: #f09d51;
-  --mainWhite: #fff;
-  --mainBlack: #222;
-  --mainGrey: #ececec;
-  --mainSpacing: 0.1rem;
-  --mainTransition: all 0.3s linear;
-}
-
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -84,6 +75,11 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+.img-container img {
+  height: 400px;
+}
+
 .button{
   position: absolute;
   top: 70%;
@@ -125,6 +121,10 @@ body {
   text-align: center;
 }
 
+.main__produto h3:nth-child(3){
+  margin-top: 10px;
+}
+
 .main__produto h4 {
   margin-top: 0.7rem;
   letter-spacing: 0.1rem;
@@ -133,8 +133,6 @@ body {
   font-weight: bold;
 }
 
-/* ---------------End of Products ---------------- */
-/* --------------- Cart ---------------- */
 .carrinho__overlay {
   position: fixed;
   top: 0;
@@ -185,7 +183,7 @@ body {
 .carrinho h2 {
   text-transform: capitalize;
   text-align: center;
-  letter-spacing: var(--mainSpacing);
+  letter-spacing: 0.1rem;
   margin-bottom: 2rem;
 }
 
@@ -197,8 +195,8 @@ body {
   margin: 1.5rem 0;
 }
 .item__carrinho img {
-  width: 75px;
-  height: 75px;
+  width: 40px;
+  height: 60px;
 }
 .item__carrinho h4 {
   font-size: 0.85rem;

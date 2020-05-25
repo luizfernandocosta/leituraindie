@@ -1,67 +1,173 @@
 {
   "items": [
     {
-      "sys": { "id": "1" },
+      "sys": {
+        "id": "1"
+      },
       "fields": {
-        "title": "queen panel bed",
-        "price": 10.99,
-        "image": { "fields": { "file": { "url": "./images/product-1.jpeg" } } }
+        "title": "fahrenheit 451",
+        "author": "ray bradbury",
+        "price": 15.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-1.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "2" },
+      "sys": {
+        "id": "2"
+      },
       "fields": {
-        "title": "king panel bed",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-2.jpeg" } } }
+        "title": "admirável mundo novo",
+        "author": "aldous leonard huxley",
+        "price": 29.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-2.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "3" },
+      "sys": {
+        "id": "3"
+      },
       "fields": {
-        "title": "single panel bed",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-3.jpeg" } } }
+        "title": "o princípe",
+        "author": "Nicolau Maquiavel",
+        "price": 25.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-3.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "4" },
+      "sys": {
+        "id": "4"
+      },
       "fields": {
-        "title": "twin panel bed",
-        "price": 22.99,
-        "image": { "fields": { "file": { "url": "./images/product-4.jpeg" } } }
+        "title": "laranja mecânica",
+        "author": "anthony burgess",
+        "price": 30.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-4.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "5" },
+      "sys": {
+        "id": "5"
+      },
       "fields": {
-        "title": "fridge",
-        "price": 88.99,
-        "image": { "fields": { "file": { "url": "./images/product-5.jpeg" } } }
+        "title": "o nome do vento",
+        "author": "patrick rothfuss",
+        "price": 20.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-5.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "6" },
+      "sys": {
+        "id": "6"
+      },
       "fields": {
-        "title": "dresser",
-        "price": 32.99,
-        "image": { "fields": { "file": { "url": "./images/product-6.jpeg" } } }
+        "title": "duna: 1",
+        "author": "frank herbert",
+        "price": 55.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-6.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "7" },
+      "sys": {
+        "id": "7"
+      },
       "fields": {
-        "title": "couch",
-        "price": 45.99,
-        "image": { "fields": { "file": { "url": "./images/product-7.jpeg" } } }
+        "title": "o anticristo",
+        "author": "friedrich nietzsche",
+        "price": 19.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-7.jpg"
+            }
+          }
+        }
       }
     },
     {
-      "sys": { "id": "8" },
+      "sys": {
+        "id": "8"
+      },
       "fields": {
-        "title": "table",
-        "price": 33.99,
-        "image": { "fields": { "file": { "url": "./images/product-8.jpeg" } } }
+        "title": "o mundo de sofia",
+        "author": "jostein gaarder",
+        "price": 39.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-8.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "9"
+      },
+      "fields": {
+        "title": "1984",
+        "author": "george orwell",
+        "price": 38.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-9.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "10"
+      },
+      "fields": {
+        "title": "leviatã, ou matéria, forma e poder de um estado eclesiástico e civil",
+        "author": "thomas hobbes",
+        "price": 30.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "./images/livro-10.jpg"
+            }
+          }
+        }
       }
     }
   ]
