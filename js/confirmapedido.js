@@ -45,20 +45,6 @@ for (let i = 0; i < carrinho.length; i++) {
 
 }
 
-function sendEmail() {
-  Email.send({
-    Host: "smtp.gmail.com",
-    Username: "leituraindie@gmail.com",
-    Password: "32919415Br",
-    To: `${email}`,
-    From: "leituraindie@gmail.com",
-    Subject: "Muito obrigado pela compra!",
-    Body: "Muito obrigado por sua compra",
-  }).then(
-    message => console.log("Enviou Email");
-    
-  );
-}
 botaoDesconto.onclick = () => {
   if (cupomDesconto.value.length === 0) {
     cupomDesconto.value = ""
@@ -76,16 +62,10 @@ botaoDesconto.onclick = () => {
 
 botaoCancelar.onclick = () => {
   window.location.replace("index.html")
-  localStorage.clear();
 }
 
 botaoConfirmar.onclick = () => {
-  sendEmail();
-  setTimeout(() => {
-    localStorage.clear();
-    window.location.replace('pedidoconfirmado.html')
-    console.log(email);
-  }, 3000);
+  window.location.replace('pedidoconfirmado.html')
 }
 
 
