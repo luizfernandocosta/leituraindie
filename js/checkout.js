@@ -33,6 +33,7 @@ nomeCliente.onkeyup = () => {
   if (nomeCliente.value.length !== 0) {
     dadosCadastrais.nome = nomeCliente.value;
     nomeCliente.style.borderBottom = "2px solid #66bb6a"
+    campoValido(0);
   } else {
     nomeCliente.style.borderBottom = "2px solid #c62828"
     delete dadosCadastrais.nome
@@ -128,10 +129,10 @@ complementoCliente.onkeyup = () => {
 }
 
 cartaoCliente.onkeyup = () => {
-  if (cartaoCliente.value.length === 15) {
+  if (cartaoCliente.value.length === 19) {
     dadosCadastrais.cartaocliente = cartaoCliente.value
   } else {
-    delete dadosCadastrais.cartaoCliente
+    delete dadosCadastrais.cartaocliente
   }
 }
 
@@ -143,8 +144,7 @@ cvvCliente.onkeyup = () => {
   }
 }
 
-botaoConfirma.onclick = () => {
-
+formaDePagamento.onclick = () => {
   let valSelecionado = formaDePagamento.options[formaDePagamento.selectedIndex].value
   if (valSelecionado === "boletobancario") {
     dadosCadastrais.formapagamento = valSelecionado
@@ -153,7 +153,11 @@ botaoConfirma.onclick = () => {
     checkoutDOM.style.height = "800px"
     dadosCartao.style.display = "inline"
   }
+}
 
+
+
+botaoConfirma.onclick = () => {
   localStorage.setItem('dadoscadastrais', JSON.stringify(dadosCadastrais))
   window.location.replace("confirmapedido.html")
 }

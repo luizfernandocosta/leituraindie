@@ -9,7 +9,7 @@ const linhaDOM = document.querySelector('.body')
 
 //Puxando dados do Local Storage
 const carrinho = JSON.parse(localStorage.getItem('carrinho'))
-const { nome, numerocomplemento, email, rua, cep, complemento, cidade, numero, estado, telefone, formapagamento } = JSON.parse(localStorage.getItem('dadoscadastrais'))
+const { nome, numerocomplemento, cartaocliente, email, rua, cep, complemento, cidade, numero, estado, telefone, formapagamento } = JSON.parse(localStorage.getItem('dadoscadastrais'))
 let precototal = JSON.parse(localStorage.getItem('precototal'))
 
 entregaDOM.innerHTML = `
@@ -28,7 +28,11 @@ if (formapagamento === "boletobancario") {
   <p>Boleto Bancário</p>
   `
 } else {
-
+  pagamentoDOM.innerHTML = `
+  <p>Total: R$${precototal.toFixed(2)}</p>
+  <p>Forma de pagamento</p>
+  <p>Cartão com final: ${cartaocliente.substr(15, 19)}</p>
+  `
 }
 
 for (let i = 0; i < carrinho.length; i++) {
