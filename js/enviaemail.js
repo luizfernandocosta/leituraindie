@@ -8,7 +8,7 @@ let message = `
 Email.send({
   Host: "smtp.gmail.com",
   Username: "leituraindie@gmail.com",
-  Password: "32919415Br",
+  Password: "%g2%Nm3##FWgpbD@aP",
   To: `${email}`,
   From: "leituraindie@gmail.com",
   Subject: "Muito obrigado pela compra!",
