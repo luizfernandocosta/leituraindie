@@ -1,0 +1,102 @@
+.confirmapedido {
+  width: 1000px;
+  height: 800px;
+  background-color: white;
+  margin-left: 100px; 
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.main__titulo {
+  background-color: #66bb6a;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #388e3c;
+  border-bottom: 1px solid #747474;
+  border-radius: 4px;
+}
+
+.main__titulo h1 {
+  margin-left: 20px;
+  color: black;
+}
+
+.confirmapedido h2 {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+.dadoscliente {
+  border: 1px solid #747474;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.formapagamento {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.cupom {
+  display: flex;
+  flex-flow: column;
+}
+
+.botaocupom {
+  border: 1px solid black;
+  width: 200px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  align-self: center;
+  margin-top: 10px;
+  transition: .3s;
+}
+
+.botaocupom:hover {
+  background-color: #66bb6a;
+}
+
+input {
+  border: 1px solid #747474;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.botoes {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.custom {
+  font-size: 1.5rem;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 4px;
+  width: 200px;
+  transition: .3s;
+}
+
+.cancelar:hover {
+  background-color: #c62828;
+  color: white;
+}
+
+.confirmar:hover {
+  background-color: #66bb6a;
+}
