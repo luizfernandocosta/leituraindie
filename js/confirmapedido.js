@@ -62,6 +62,7 @@ botaoDesconto.onclick = () => {
 
 botaoCancelar.onclick = () => {
   window.location.replace("index.html")
+  localStorage.clear()
 }
 
 botaoConfirmar.onclick = () => {
