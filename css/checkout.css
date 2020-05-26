@@ -1,56 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-body {
-  font-family: 'Roboto', sans-serif;
+.main__checkout {
+  height: 550px;
+  width: 30%;
+  border-radius: 4px;
+  background-color: #fff;
+  display: flex;
+  flex-flow: column;
+  padding: 50px;
+  margin-left: 100px;
 }
 
-.main{
-  height: 100vh;
-  width: 100vw;
-  background-color: rgb(231, 226, 221);
+.cadastro {
+  align-self: center;
+  color: #323232;
+  font-size: 1.7rem;
+}
+
+.cadastro h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.main__form {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dadoscobranca {
+  display: none;
+  flex-flow: column;
   align-items: flex-start;
 }
 
-.responsive-table {
-  height: 100%;
+.dadoscartao {
+  display: none;
 }
 
-.responsive-table li {
-  width: 1000px;
+.main__form > div {
   margin-top: 20px;
-  border-radius: 3px;
-  padding: 50px;
-  display: flex;
-  justify-content: space-between;
 }
 
-.responsive-table .table-header {
+.dadoscobranca > div {
+  margin-top: 10px;
+}
+
+label {
+  font-size: 1rem;
+  align-self: flex-start;
+  color: #747474;
+  display: block;
+}
+
+input {
+  padding: 5px;
+  border-bottom: 2px solid #747474;
+  transition: .3s;
+  width: 400px; 
+}
+
+.botaoconfirma {
+  margin-top: 30px;
+  border: 1px solid #4fc3f7;
+  border-radius: 50px;
+  padding: 10px;
+  width: 200px;
+  font-size: 1.5rem;
+  transition: .3s;
+  align-self: center;
+}
+
+.botaoconfirma:hover{
   background-color: #4fc3f7;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-.responsive-table .table-row {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-  width: 100%;
 }
 
-.responsive-table:last-child{
-  margin-bottom: 300px;
+label[for="numero"], label[for="complemento"], label[for="bairro"],
+label[for="cidade"], label[for="estado"], label[for="opcao"], label[for="cartaocredito"], label[for="codigo"] {
+  display: inline;
 }
 
-.responsive-table .col-1 {
-  flex-basis: 10%;
+input:focus {
+  border-bottom: 2px solid black;
 }
-.responsive-table .col-2 {
-  flex-basis: 40%;
+
+input[class="complementocliente"] {
+  width: 105px;
 }
-.responsive-table .col-3 {
-  flex-basis: 25%;
+
+input[class="bairrocliente"]{
+  width: 150px;
 }
-.responsive-table .col-4 {
-  flex-basis: 25%;
+
+input[class="cidadecliente"]{
+  width: 200px;
+}
+
+input[class="ruacliente"] {
+  width: 350px;
+}
+
+input[class="estadocliente"] {
+  width: 30px;
+}
+
+input[class="codigocliente"], input[class="numerocliente"] {
+  width: 40px;
+}
+
+input[class="cartaocliente"] {
+  width: 200px;
+}
+
+input[disabled] {
+  background-color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+i {
+  font-size: 1.2rem;
+  color: #66bb6a;
+  visibility: hidden;
 }
