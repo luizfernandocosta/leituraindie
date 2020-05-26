@@ -12,7 +12,7 @@ Email.send({
   To: `${email}`,
   From: "leituraindie@gmail.com",
   Subject: "Muito obrigado pela compra!",
-  Body: "Muito obrigado por comprar em nossa loja! Seu pedido tem previsão de 3 dias úteis de entrega",
+  Body: `${message}`,
 }).then(function () {
   localStorage.clear()
 })
