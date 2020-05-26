@@ -3,7 +3,7 @@ const { email } = JSON.parse(localStorage.getItem('dadoscadastrais'))
 Email.send({
   Host: "smtp.gmail.com",
   Username: "leituraindie@gmail.com",
-  Password: "32919415Br",
+  Password: "",
   To: `${email}`,
   From: "leituraindie@gmail.com",
   Subject: "Muito obrigado pela compra!",
