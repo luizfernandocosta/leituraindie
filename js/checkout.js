@@ -144,6 +144,8 @@ cvvCliente.onkeyup = () => {
   }
 }
 
+dadosCadastrais.formapagamento = "boletobancario"
+
 formaDePagamento.onclick = () => {
   let valSelecionado = formaDePagamento.options[formaDePagamento.selectedIndex].value
   if (valSelecionado === "boletobancario") {

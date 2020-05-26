@@ -13,18 +13,12 @@
   align-self: center;
   color: #323232;
   font-size: 1.7rem;
-}
-
-.cadastro h1 {
-  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .main__form {
   display: flex;
   flex-flow: column;
-  align-items: flex-start;
-  justify-content: flex-start;
 }
 
 .dadoscobranca {
@@ -123,4 +117,35 @@ input::-webkit-inner-spin-button {
 i {
   font-size: 1.2rem;
   color: #66bb6a;
+}
+
+@media (max-width: 600px) {
+
+  body {
+    overflow: scroll;
+  }
+
+  .main {
+    justify-content: center;
+  }
+  .main__checkout {
+    width: 95%;
+    padding: 30px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    width: 250px;
+  }
+
+  .main__form > div {
+    margin-top: 5px;
+  }
+  
+  .dadoscobranca > div {
+    margin-top: 5px;
+  }
+  
 }
