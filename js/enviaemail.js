@@ -1,5 +1,10 @@
 const { email } = JSON.parse(localStorage.getItem('dadoscadastrais'))
 
+let message = `
+  Muito obrigado pela sua compra!
+  A previsão de chegada do seu pedido é entre 3-5 dias úteis.
+`
+
 Email.send({
   Host: "smtp.gmail.com",
   Username: "leituraindie@gmail.com",
