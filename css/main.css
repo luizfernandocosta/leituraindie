@@ -8,10 +8,8 @@ body {
 .header{
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   color: #fff;
-  text-align: center;
 }
 
 .header__video {
@@ -41,11 +39,17 @@ body {
 .header__content {
   z-index: 2;
   text-shadow: 2px 2px 2px black;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__content h1 {
   font-size: 100px;
   transition: .3s;
+  letter-spacing: 10px;
 }
 
 .header__content p {
@@ -63,6 +67,7 @@ body {
   padding: 10px;
   border-radius: 4px;
   transition: .3s;
+  margin-top: 50px;
 }
 
 .button:hover {
