@@ -33,7 +33,6 @@ nomeCliente.onkeyup = () => {
   if (nomeCliente.value.length !== 0) {
     dadosCadastrais.nome = nomeCliente.value;
     nomeCliente.style.borderBottom = "2px solid #66bb6a"
-    campoValido(0);
   } else {
     nomeCliente.style.borderBottom = "2px solid #c62828"
     delete dadosCadastrais.nome
