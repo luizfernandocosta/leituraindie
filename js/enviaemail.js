@@ -94,7 +94,7 @@ Email.send({
   Username: "leituraindie@gmail.com",
   Password: "%g2%Nm3##FWgpbD@aP",
   To: `${email}`,
-  From: "LeituraIndie",
+  From: "leituraindie@gmail.com",
   Subject: "Muito obrigado pela compra!",
   Body: `${message}`,
 }).then(function () {
