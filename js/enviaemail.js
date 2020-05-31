@@ -90,7 +90,9 @@ let message = `
 `
 
 Email.send({
-  SecureToken: "acc63244-d6e6-42d9-a7b4-72ef59e6f5ee",
+  Host: "smtp.gmail.com",
+  Username: "leituraindie@gmail.com",
+  Password: "%g2%Nm3##FWgpbD@aP",
   To: `${email}`,
   From: "LeituraIndie",
   Subject: "Muito obrigado pela compra!",
