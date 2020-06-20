@@ -160,5 +160,4 @@ formaDePagamento.onclick = () => {
 
 botaoConfirma.onclick = () => {
   localStorage.setItem('dadoscadastrais', JSON.stringify(dadosCadastrais))
-  window.location.replace("confirmapedido.html")
 }
